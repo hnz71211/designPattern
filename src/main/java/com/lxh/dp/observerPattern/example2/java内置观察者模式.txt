@@ -1,0 +1,12 @@
+java内置观察者模式
+1. 把对象变成观察者：实现观察者接口（java.util.Observer)，然后调用任何Observerable对象的addObserver()方法。不想当观察者，调用deleteObserver()方法。
+2. 可观察者（也就是Subject）如何送出通知:扩展java.util.Observable接口产生"可观察者"类，
+    ①先调用setChanged()方法，标记状态已经改变的事实；
+    ②然后调用两种notifyObservers()方法： notifyObservers()或notifyObservers(Object arg)
+
+观察者如何接收通知：
+观察者实现update方法
+updata(Observable o, Object arg)
+o: Subject本事作为一个变量，好让观察者知道哪个主题通知了它；
+arg: 传入notifyObservers()的数据对象。如果没有则说明为空。
+如果想"推"数据给观察者，可以把数据当做数据对象传送给notifyObservers(arg)方法。否则，观察者必须从可观察者对象中"拉"数据。
